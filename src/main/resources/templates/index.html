@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Country Tracker</title>
+</head>
+<body>
+    <div align="centre">
+        <h1>Country List</h1>
+        <table>
+            <thead>
+                <th>Country Name</th>
+                <th>Description</th>
+                <th>Who you travelled with</th>
+            </thead>
+            <tbody>
+                <tr th:each="country : ${listCountries}">
+                    <td th:text="${country.countryName}"></td>
+                    <td th:text="${country.description}"></td>
+                    <td th:text="${country.whoWith}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
