@@ -11,5 +11,6 @@ public interface CountryService {
     // CountryService Methods
     List<Country> getAllCountries();
     void saveCountry(Country country);
+    Country getCountryById(long id);
 
 }

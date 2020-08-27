@@ -18,12 +18,14 @@
                 <th>Country Name</th>
                 <th>Description</th>
                 <th>Who you travelled with</th>
+                <th>Actions</th>
             </thead>
             <tbody>
                 <tr th:each="country : ${listCountries}">
                     <td th:text="${country.countryName}"></td>
                     <td th:text="${country.description}"></td>
                     <td th:text="${country.withWho}"></td>
+                    <td><a th:href="@{/showFormForUpdate/{id}(id=${country.id})}" class="btn btn-primary mb-3">Edit</a></td>
                 </tr>
             </tbody>
         </table>
