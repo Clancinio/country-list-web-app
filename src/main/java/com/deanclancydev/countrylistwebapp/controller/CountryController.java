@@ -2,13 +2,11 @@ package com.deanclancydev.countrylistwebapp.controller;
 
 import com.deanclancydev.countrylistwebapp.model.Country;
 import com.deanclancydev.countrylistwebapp.service.CountryService;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CountryController {
@@ -38,5 +36,15 @@ public class CountryController {
         // Save to database
         countryService.saveCountry(country);
         return "redirect:/";
+    }
+
+    @GetMapping("/showFormForUpdate/{id}")
+    public String showFormForUpdate(@PathVariable (value = "id") long id, Model model){
+        // get country from the service
+        Country country = countryService.getCountryById(id);
+
+        // set country as a model attribute to pre-populate the form
+        model.addAttribute("country", country);
+        return "update_employee";
     }
 }
